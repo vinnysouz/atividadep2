@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Desconto</title>
+</head>
+<body>
+
+    <h1>Calculadora de Desconto</h1>
+
+    <form>
+        <label for="compra">Valor da compra (R$):</label><br>
+        <input type="number" id="compra" step="0.01" placeholder="Ex: 150"><br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+
+    <br>
+    <hr>
+
+    <h2>Resultado:</h2>
+    <p>Valor da compra: R$ <span id="valorCompra">0.00</span></p>
+    <p>Valor do desconto: R$ <span id="valorDesconto">0.00</span></p>
+    <p>Valor da compra com desconto: R$ <span id="valorFinal">0.00</span></p>
+
+    <script>
+        function calcular() {
+            var compra = parseFloat(document.getElementById('compra').value) || 0;
+            var desconto = 0;
+
+            // Aplicação das condições de desconto
+            if (compra > 500) {
+                desconto = compra * 0.10; // 10% de desconto
+            } else if (compra > 100) {
+                desconto = compra * 0.05; // 5% de desconto
+            }
+
+            var valorFinal = compra - desconto;
+
+            document.getElementById('valorCompra').innerText = compra.toFixed(2);
+            document.getElementById('valorDesconto').innerText = desconto.toFixed(2);
+            document.getElementById('valorFinal').innerText = valorFinal.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
